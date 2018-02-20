@@ -1,0 +1,13 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "requirejs": "latest",
+    "knockout": "latest",
+    "babel-standalone": "latest",
+    "requirejs-domReady": "latest",
+    "jquery": "latest",
+    "q" : "1.5.0",
+    "requirejs-text": "latest"
+  }
+}
