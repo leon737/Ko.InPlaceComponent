@@ -6,6 +6,8 @@ define(function(require) {
     const model = function(params) {
         this.name = ko.observable(params.name());
         this.version = version++;
+
+        this.dispose = () => console.log(`dispose called, version=${this.version}`);
     };
 
     return model;

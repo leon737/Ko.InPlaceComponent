@@ -1,6 +1,6 @@
 define(function(require){
     const ko = require('ko');
-    const inplaceComponentBinding = require('ko.inplace.component/main');
+    const inplaceComponentBinding = require('ko.inplace.component/binding');
     
     inplaceComponentBinding.init();
    
