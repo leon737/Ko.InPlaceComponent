@@ -7,7 +7,15 @@
 
 <body>
     <div>
-        <input type="checkbox" data-bind="checked:componentActive" /> Component active
+        <div>
+            <input type="checkbox" data-bind="checked:componentActive" /> Component active
+        </div>
+        <div>
+            <input type="checkbox" data-bind="checked:trackParams" /> Track Parameters
+        </div>
+        <div>
+            Parameter [name]: <input type="text" data-bind="value:name" />
+        </div>
     </div>
     <fieldset>
         <legend>Component:</legend>

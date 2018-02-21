@@ -34,17 +34,24 @@ define(function (require) {
             return $(element).data(name);
     }
 
+    utils.safeCreateModel = function(modelClass, params, trackParams) {
+        const func = () => new modelClass(params);
+        return !!trackParams && ko.unwrap(trackParams) ? func() : ko.ignoreDependencies(func);
+    }
+
     const init = function () {
         ko.bindingHandlers.inplaceComponent = {
             init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
                 const value = ko.unwrap(valueAccessor());
                 const componentName = value.name;
+                const params = value.params;
+                const trackParams = value.trackParams;
                 require([`text!${componentName}/template.html`], template => {
                     const parsed = ko.utils.parseHtmlFragment(template);
                     utils.nodes(element, parsed);
                 });
                 require([`${componentName}/model`], modelClass => {
-                    utils.modelClass(element, modelClass);
+                    utils.modelClass(element, {modelClass: modelClass, params: params, trackParams: trackParams});
                 })
                 return { 'controlsDescendantBindings': true };
             },
@@ -56,9 +63,9 @@ define(function (require) {
                     const nodes = utils.cloneNodes(savedNodes);
                     ko.virtualElements.setDomNodeChildren(element, nodes);
                     const modelClass = utils.modelClass(element);
-                    const model = new modelClass();
+                    const model = utils.safeCreateModel(modelClass.modelClass, modelClass.params, modelClass.trackParams);
                     const childContext = bindingContext.createChildContext(model);
-                    ko.applyBindingsToDescendants(model, element);
+                    ko.applyBindingsToDescendants(childContext, element);
                 }
                 else {
                     utils.emptyDomNode(element);
