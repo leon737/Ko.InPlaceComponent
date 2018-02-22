@@ -23,7 +23,17 @@ define(function (require) {
             update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
                 const value = ko.unwrap(valueAccessor());
                 const componentActive = ko.unwrap(value.active);
+                const disposeModel = updateElement => {
+                    const model = utils.model(element);
+                    const dispose = !!model && model.dispose;
+                    if (!!dispose && typeof dispose === 'function') {
+                        dispose.call(model);
+                    }
+                    if (updateElement)
+                        utils.model(element, null);
+                };
                 if (componentActive) {
+                    disposeModel(false);
                     const savedNodes = utils.nodes(element);
                     const nodes = utils.cloneNodes(savedNodes);
                     ko.virtualElements.setDomNodeChildren(element, nodes);
@@ -35,12 +45,7 @@ define(function (require) {
                 }
                 else {
                     utils.emptyDomNode(element);
-                    const model = utils.model(element);
-                    const dispose = !!model && model.dispose;
-                    if (!!dispose && typeof dispose === 'function') {
-                        dispose.call(model);
-                    }
-                    utils.model(element, null);
+                    disposeModel(true);
                 }
             }
         };

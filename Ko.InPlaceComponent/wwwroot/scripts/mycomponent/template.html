@@ -1,7 +1,19 @@
-<div>HELLO, <span data-bind="text:name"></span>!</div>
-
-<input type="text" data-bind="textInput:name"/>
+<div>Hello, <span data-bind="text:name"></span>! Your age is <span data-bind="text:age"></span>.</div>
 
 <div>
-    Component version: <span data-bind="text:version"></span>
+    Name:
+    <input type="text" data-bind="textInput:name" />
+</div>
+<div>
+    Age:
+    <input type="number" data-bind="textInput:age" />
+</div>
+<div>
+    Favorite color (non-observable):
+    <input type="text" />
+</div>
+
+<div>
+    Component version:
+    <span data-bind="text:version"></span>
 </div>

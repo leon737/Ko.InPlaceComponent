@@ -1,6 +1,7 @@
 ﻿<html>
 
 <head>
+    <title>Ko Inplace Component Sample</title>
     <script src="/lib/babel-standalone/babel.min.js"></script>
     <script data-main="/scripts/main" src='/lib/requirejs/require.js'></script>
 </head>
@@ -14,7 +15,12 @@
             <input type="checkbox" data-bind="checked:trackParams" /> Track Parameters
         </div>
         <div>
-            Parameter [name]: <input type="text" data-bind="value:name" />
+            Parameter [name]:
+            <input type="text" data-bind="value:name" />
+        </div>
+        <div>
+            Non-tracking parameter [age]:
+            <input type="number" data-bind="value:age" />
         </div>
     </div>
     <fieldset>

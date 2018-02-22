@@ -8,13 +8,15 @@ define(function(require){
         
         this.componentActive = ko.observable(false);
         this.name = ko.observable('John');
+        this.age = ko.observable(30);
         this.trackParams = ko.observable(false);
 
         this.componentOptions = {
             name: 'mycomponent',
             active: this.componentActive,
             params: {
-                name: this.name
+                name: this.name,
+                age: this.age
             },
             trackParams: this.trackParams
         };
