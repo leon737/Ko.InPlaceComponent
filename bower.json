@@ -1,0 +1,34 @@
+{
+    "name": "ko.inplace-component",
+    "description": "",
+    "main": [
+        "Ko.InPlaceComponent/wwwroot/scripts/ko.inplace.component/binding.js",
+        "Ko.InPlaceComponent/wwwroot/scripts/ko.inplace.component/utils.js"
+    ],
+    "keywords": [
+      "ko",
+      "inplace",
+      "component"
+    ],
+    "authors": [
+      "Leonid Gordo"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/leon737/Ko.InPlaceComponent",
+    "ignore": [
+      "**/.*",
+      "node_modules",
+      "bower_components",
+      "test",
+      "tests",
+      "lib",
+      "bin",
+      "obj",
+      "Properties",
+      "*.cs",
+      "*.csproj",
+      "*.sln",
+      ".vs"
+    ]
+  }
+  

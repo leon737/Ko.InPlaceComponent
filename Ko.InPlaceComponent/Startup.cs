@@ -23,7 +23,6 @@ namespace Ko.InPlaceComponent
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,7 +33,6 @@ namespace Ko.InPlaceComponent
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
