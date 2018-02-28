@@ -2,8 +2,7 @@
     "name": "ko.inplace-component",
     "description": "",
     "main": [
-        "Ko.InPlaceComponent/wwwroot/scripts/ko.inplace.component/binding.js",
-        "Ko.InPlaceComponent/wwwroot/scripts/ko.inplace.component/utils.js"
+        "dist/ko.inplace.component.min.js"
     ],
     "keywords": [
       "ko",
@@ -28,7 +27,8 @@
       "*.cs",
       "*.csproj",
       "*.sln",
-      ".vs"
+      ".vs",
+	  "Ko.InPlaceComponent"
     ]
   }
   

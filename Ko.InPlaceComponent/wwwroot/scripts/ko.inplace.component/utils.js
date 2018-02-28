@@ -1,4 +1,4 @@
-define(function(require) {
+define('ko.inplace.component/utils', function(require) {
     const ko = require('ko');
     const $ = require('jquery');    
     

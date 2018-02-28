@@ -1,4 +1,4 @@
-define(function (require) {
+define('ko.inplace.component/binding', function (require) {
     const utils = require('ko.inplace.component/utils');
     const ko = require('ko');
 
@@ -39,6 +39,9 @@ define(function (require) {
                     ko.virtualElements.setDomNodeChildren(element, nodes);
                     const modelClass = utils.modelClass(element);
                     const model = utils.safeCreateModel(modelClass.modelClass, modelClass.params, modelClass.trackParams);
+                    if (ko.isObservable(value.active)) {
+                        model.destroy = () => value.active(false);
+                    }
                     const childContext = bindingContext.createChildContext(model);
                     utils.model(element, model);
                     ko.applyBindingsToDescendants(childContext, element);
