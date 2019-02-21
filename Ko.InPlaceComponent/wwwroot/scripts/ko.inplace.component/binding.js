@@ -11,13 +11,20 @@ define('ko.inplace.component/binding', function (require) {
                 const trackParams = value.trackParams;
                 const templateFileName = value.template || 'template.html';
                 const modelFileName = value.model || 'model';
+                const customModelClass = value.modelClass;
+                const customModelClassFactory = value.modelClassFactory;
                 require([`text!${componentName}/${templateFileName}`], template => {
                     const parsed = ko.utils.parseHtmlFragment(template);
                     utils.nodes(element, parsed);
                 });
-                require([`${componentName}/${modelFileName}`], modelClass => {
-                    utils.modelClass(element, { modelClass: modelClass, params: params, trackParams: trackParams });
-                })
+                if (!customModelClass && !customModelClassFactory) {
+                    require([`${componentName}/${modelFileName}`], modelClass => {
+                        utils.modelClass(element, { modelClass: modelClass, params: params, trackParams: trackParams });
+                    })
+                }
+                else {
+                    utils.modelClass(element, { modelClass: !!customModelClassFactory ? customModelClassFactory() : customModelClass, params: params, trackParams: trackParams });
+                }
                 return { 'controlsDescendantBindings': true };
             },
             update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
